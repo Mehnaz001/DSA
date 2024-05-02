@@ -7,8 +7,8 @@ int main(){
     cout<<"Enter a number: ";
     cin>>number;
 
-    for(int i=2; i<=n; i++){
-        if(n%i==0){
+    for(int i=2; i<=number; i++){
+        if(number%i==0){
             isPrime=0;
             break;
         }
