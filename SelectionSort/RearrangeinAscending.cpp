@@ -21,7 +21,7 @@ int main(){
         swap(arr[i],arr[index]);
     }
 
-    //Printing sorted array
+    //Printing sorted array  
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
     }
