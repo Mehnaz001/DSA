@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int ans = 0;
+        int left_zeroes = 0;
+        int right_ones = 0;
+        for(char c : s) {
+            if(c=='1')
+            right_ones++;
+        }
+        for(int i=0; i+1<s.size(); i++) {
+            if(s[i]=='0')
+            left_zeroes++;
+            else
+            right_ones--;
+
+            ans = max(ans,left_zeroes + right_ones);
+        } 
+        return ans;
+    }
+};
