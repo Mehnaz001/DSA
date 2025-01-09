@@ -1,0 +1,20 @@
+class Solution {
+public:
+   
+    bool checkPrefix(string main, string sub) {
+        for(int i=0; i<sub.size(); i++) {
+            if(main[i]!=sub[i])
+            return 0;
+        }
+        return 1;
+    }
+    int prefixCount(vector<string>& words, string pref) {
+        int ans = 0;
+        for(int i=0; i<words.size(); i++) {
+            if(checkPrefix(words[i],pref)) 
+            ans++;
+        }
+
+        return ans;
+    }
+};
