@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
+      
+    // Step 1: Build frequency map for words2
+    unordered_map<char, int> maxFreq;
+    
+    // Iterate through each string in words2
+    for (const string& word : words2) {
+        unordered_map<char, int> wordFreq;
+        
+        // Count frequency of each character in the current word
+        for (char ch : word) {
+            wordFreq[ch]++;
+        }
+        
+        // Update maxFreq to store the maximum frequency of each character across all words in words2
+        for (const auto& entry : wordFreq) {
+            maxFreq[entry.first] = max(maxFreq[entry.first], entry.second);
+        }
+    }
+    
+    // Step 2: Check each word in words1
+    vector<string> result;
+    
+    for (const string& word : words1) {
+        unordered_map<char, int> wordFreq;
+        
+        // Count frequency of each character in the current word
+        for (char ch : word) {
+            wordFreq[ch]++;
+        }
+        
+        // Check if the current word in words1 contains all characters of words2 with the required frequencies
+        bool isUniversal = true;
+        
+        for (const auto& entry : maxFreq) {
+            if (wordFreq[entry.first] < entry.second) {
+                isUniversal = false;
+                break;
+            }
+        }
+        
+        if (isUniversal) {
+            result.push_back(word);
+        }
+    }
+    
+        return result; 
+    }
+};
